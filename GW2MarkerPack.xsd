@@ -1,14 +1,8 @@
 <?xml version="1.0"?>
 <xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="https://github.com/xrandox/Gw2_Marker_Pack_DTD" 
-            xmlns="https://github.com/xrandox/Gw2_Marker_Pack_DTD"
+            targetNamespace="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD" 
+            xmlns="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD"
             elementFormDefault="qualified">
-
-  <xs:simpleType name="bool">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[01]"/>
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:element name="OverlayData">
     <xs:complexType>
@@ -18,102 +12,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+
   <xs:element name="MarkerCategory">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="MarkerCategory" />
       </xs:sequence>
-      <xs:attribute name="name" type="xs:string" use="required" />
-      <xs:attribute name="displayname" type="xs:string" use="required" />
-      <xs:attribute name="achievementid" type="xs:positiveInteger" />
-      <xs:attribute name="achievementbit" type="xs:positiveInteger" />
-      <xs:attribute name="alpha" type="xs:float" default="1.0"/>
-      <xs:attribute name="animspeed" type="xs:float" />
-      <xs:attribute name="autotrigger" type="bool" default="0"/>
-      <xs:attribute name="behavior">
-        <xs:simpleType>
-          <xs:restriction base="xs:positiveInteger">
-            <xs:pattern value="[0-7]|101"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="bounce">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="bounce"/>
-            <xs:enumeration value="rise"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="bounce-height" type="xs:float" />
-      <xs:attribute name="bounce-duration" type="xs:float" />
-      <xs:attribute name="bounce-delay" type="xs:float" />
-      <xs:attribute name="canfade" type="bool" default="1"/>
-      <xs:attribute name="color" default="#FFFFFF">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:pattern value="#[0-9a-fA-F]{6}"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="copy" type="xs:string" />
-      <xs:attribute name="copy-message" type="xs:string" />
-      <xs:attribute name="cull">
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="None" />
-            <xs:enumeration value="Clockwise" />
-            <xs:enumeration value="CounterClockwise" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="defaulttoggle" type="bool" default="1"/>
-      <xs:attribute name="fadenear" type="xs:float" default="700"/>
-      <xs:attribute name="fadefar" type="xs:float" default="900"/>
-      <xs:attribute name="festival" type="xs:string"/>
-      <xs:attribute name="heightoffset" type="xs:float" default="1.5"/>
-      <xs:attribute name="iconfile" type="xs:string"/>
-      <xs:attribute name="iconsize" type="xs:string" default="1"/>
-      <xs:attribute name="info" type="xs:string"/>
-      <xs:attribute name="inforange" type="xs:float" default="10.0"/>
-      <xs:attribute name="invertbehavior" type="bool" default="0"/>
-      <xs:attribute name="isseparator" type="bool" default="0"/>
-      <xs:attribute name="mapdisplaysize" type="xs:float" default="20"/>
-      <xs:attribute name="maptype" type="xs:string"/>
-      <xs:attribute name="mount" type="xs:string"/>
-      <xs:attribute name="profession" type="xs:string"/>
-      <xs:attribute name="race" type="xs:string"/>
-      <xs:attribute name="resetlength" type="xs:float"/>
-      <xs:attribute name="rotate" type="xs:string"/>
-      <xs:attribute name="rotate-x" type="xs:float"/>
-      <xs:attribute name="rotate-y" type="xs:float"/>
-      <xs:attribute name="rotate-z" type="xs:float"/>
-      <xs:attribute name="scaleonmapwithzoom" type="bool" default="1"/>
-      <xs:attribute name="schedule" type="xs:string"/>
-      <xs:attribute name="schedule-duration" type="xs:float"/>
-      <xs:attribute name="show" type="xs:string"/>
-      <xs:attribute name="hide" type="xs:string"/>
-      <xs:attribute name="minsize" type="xs:float" default="5"/>
-      <xs:attribute name="maxsize" type="xs:float" default="2048"/>
-      <xs:attribute name="specialization" type="xs:string"/>
-      <xs:attribute name="texture" type="xs:string"/>
-      <xs:attribute name="tip-name" type="xs:string"/>
-      <xs:attribute name="tip-description" type="xs:string"/>
-      <xs:attribute name="toggle" type="xs:string"/>
-      <xs:attribute name="trailscale" type="xs:float" default="1"/>
-      <xs:attribute name="triggerrange" type="xs:float" default="2"/>
-      <xs:attribute name="type" type="xs:string"/>
-      <xs:attribute name="minimapvisibility" type="bool" default="1"/>
-      <xs:attribute name="mapvisibility" type="bool" default="1"/>
-      <xs:attribute name="ingamevisibility" type="bool" default="1"/>
-      <xs:attribute name="iswall" type="bool" default="0"/>
-      <xs:attribute name="script-tick" type="xs:string"/>
-      <xs:attribute name="script-focus" type="xs:string"/>
-      <xs:attribute name="script-trigger" type="xs:string"/>
-      <xs:attribute name="script-filter" type="xs:string"/>
-      <xs:attribute name="script-once" type="xs:string"/>
+      <xs:attributeGroup ref="CommonAttr"/>
+      <xs:attributeGroup ref="CategoryAttr"/>
+      <xs:attributeGroup ref="CategoryAndMarkerAttr"/>
+      <xs:attributeGroup ref="CategoryAndTrailAttr"/>
     </xs:complexType>
   </xs:element>
+  
   <xs:element name="POIs">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -122,173 +33,183 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
+
   <xs:element name="POI">
     <xs:complexType>
-      <xs:attribute name="MapID" type="xs:positiveInteger" use="required" />
-      <xs:attribute name="xpos" type="xs:float" use="required" />
-      <xs:attribute name="ypos" type="xs:float" use="required" />
-      <xs:attribute name="zpos" type="xs:float" use="required" />
-      <xs:attribute name="type" type="xs:string" use="required" />
-      <xs:attribute name="GUID" type="xs:string" use="required" />
-      <xs:attribute name="achievementid" type="xs:positiveInteger" />
-      <xs:attribute name="achievementbit" type="xs:positiveInteger" />
-      <xs:attribute name="alpha" type="xs:float" default="1.0"/>
-      <xs:attribute name="animspeed" type="xs:float" />
-      <xs:attribute name="autotrigger" type="bool" default="0"/>
-      <xs:attribute name="behavior">
+        <xs:attributeGroup ref="CommonAttr"/>
+        <xs:attributeGroup ref="MarkerAttr"/>
+        <xs:attributeGroup ref="CategoryAndMarkerAttr"/>
+        <xs:attributeGroup ref="MarkerAndTrailAttr"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Trail">
+    <xs:complexType>
+        <xs:attributeGroup ref="CommonAttr"/>
+        <xs:attributeGroup ref="TrailAttr"/>
+        <xs:attributeGroup ref="CategoryAndTrailAttr"/>
+        <xs:attributeGroup ref="MarkerAndTrailAttr"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:attributeGroup name="CommonAttr">
+    <xs:attribute name="achievementId" type="xs:positiveInteger" />
+    <xs:attribute name="achievementBit" type="xs:integer" />
+    <xs:attribute name="alpha" type="xs:float" default="1.0"/>
+    <xs:attribute name="canfade" type="bool" default="1"/>
+    <xs:attribute name="color" default="#FFFFFF">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="#[0-9a-fA-F]{6}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="cull">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None" />
+          <xs:enumeration value="Clockwise" />
+          <xs:enumeration value="CounterClockwise" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="fadeNear" type="xs:float" default="700"/>
+    <xs:attribute name="fadeFar" type="xs:float" default="900"/>
+    <xs:attribute name="festival">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="((halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash)(,(halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="maptype">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="((unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds
+          |bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini)(,(unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds|bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="mount">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="((jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale)(,(jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="profession">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="((guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant)(,(guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="race">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="((asura|human|charr|sylvari|norn)(,(asura|human|charr|sylvari|norn))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="schedule" type="xs:string"/>
+    <xs:attribute name="schedule-duration" type="xs:float"/>
+    <xs:attribute name="specialization" type="xs:string"/>
+    <xs:attribute name="tip-name" type="xs:string"/>
+    <xs:attribute name="tip-description" type="xs:string"/>
+    <xs:attribute name="miniMapVisibility" type="bool" default="1"/>
+    <xs:attribute name="mapVisibility" type="bool" default="1"/>
+    <xs:attribute name="inGameVisibility" type="bool" default="1"/>
+    <xs:attribute name="script-tick" type="xs:string"/>
+    <xs:attribute name="script-focus" type="xs:string"/>
+    <xs:attribute name="script-trigger" type="xs:string"/>
+    <xs:attribute name="script-filter" type="xs:string"/>
+    <xs:attribute name="script-once" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="CategoryAttr">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="DisplayName" type="xs:string" use="required"/>
+    <xs:attribute name="isseparator" type="bool" default="0"/>
+    <xs:attribute name="defaulttoggle" type="bool" default="1"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="MarkerAttr">
+    <xs:attribute name="MapID" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="xpos" type="xs:float" use="required"/>
+    <xs:attribute name="ypos" type="xs:float" use="required"/>
+    <xs:attribute name="zpos" type="xs:float" use="required"/>
+    <xs:attribute name="GUID" type="xs:string" use="required"/>
+    <xs:attribute name="rotate">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="(-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rotate-x" type="xs:float"/>
+      <xs:attribute name="rotate-y" type="xs:float"/>
+      <xs:attribute name="rotate-z" type="xs:float"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="TrailAttr">
+    <xs:attribute name="trailData" type="xs:string" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="CategoryAndMarkerAttr">
+    <xs:attribute name="autoTrigger" type="bool" default="0"/>
+    <xs:attribute name="behavior">
         <xs:simpleType>
           <xs:restriction base="xs:positiveInteger">
             <xs:pattern value="[0-7]|101"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="bounce">
+    <xs:attribute name="bounce">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="bounce"/>
             <xs:enumeration value="rise"/>
           </xs:restriction>
         </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="bounce-height" type="xs:float" />
-      <xs:attribute name="bounce-duration" type="xs:float" />
-      <xs:attribute name="bounce-delay" type="xs:float" />
-      <xs:attribute name="canfade" type="bool" default="1"/>
-      <xs:attribute name="color" default="#FFFFFF">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:pattern value="#[0-9a-fA-F]{6}"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="copy" type="xs:string" />
-      <xs:attribute name="copy-message" type="xs:string" />
-      <xs:attribute name="cull">
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="None" />
-            <xs:enumeration value="Clockwise" />
-            <xs:enumeration value="CounterClockwise" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="defaulttoggle" type="bool" default="1"/>
-      <xs:attribute name="fadenear" type="xs:float" default="700"/>
-      <xs:attribute name="fadefar" type="xs:float" default="900"/>
-      <xs:attribute name="festival" type="xs:string"/>
-      <xs:attribute name="heightoffset" type="xs:float" default="1.5"/>
-      <xs:attribute name="iconfile" type="xs:string"/>
-      <xs:attribute name="iconsize" type="xs:string" default="1"/>
-      <xs:attribute name="info" type="xs:string"/>
-      <xs:attribute name="inforange" type="xs:float" default="10.0"/>
-      <xs:attribute name="invertbehavior" type="bool" default="0"/>
-      <xs:attribute name="isseparator" type="bool" default="0"/>
-      <xs:attribute name="mapdisplaysize" type="xs:float" default="20"/>
-      <xs:attribute name="maptype" type="xs:string"/>
-      <xs:attribute name="mount" type="xs:string"/>
-      <xs:attribute name="profession" type="xs:string"/>
-      <xs:attribute name="race" type="xs:string"/>
-      <xs:attribute name="resetlength" type="xs:float"/>
-      <xs:attribute name="rotate" type="xs:string"/>
-      <xs:attribute name="rotate-x" type="xs:float"/>
-      <xs:attribute name="rotate-y" type="xs:float"/>
-      <xs:attribute name="rotate-z" type="xs:float"/>
-      <xs:attribute name="scaleonmapwithzoom" type="bool" default="1"/>
-      <xs:attribute name="schedule" type="xs:string"/>
-      <xs:attribute name="schedule-duration" type="xs:float"/>
-      <xs:attribute name="show" type="xs:string"/>
-      <xs:attribute name="hide" type="xs:string"/>
-      <xs:attribute name="minsize" type="xs:float" default="5"/>
-      <xs:attribute name="maxsize" type="xs:float" default="2048"/>
-      <xs:attribute name="specialization" type="xs:string"/>
-      <xs:attribute name="texture" type="xs:string"/>
-      <xs:attribute name="tip-name" type="xs:string"/>
-      <xs:attribute name="tip-description" type="xs:string"/>
-      <xs:attribute name="toggle" type="xs:string"/>
-      <xs:attribute name="triggerrange" type="xs:float" default="2"/>
-      <xs:attribute name="minimapvisibility" type="bool" default="1"/>
-      <xs:attribute name="mapvisibility" type="bool" default="1"/>
-      <xs:attribute name="ingamevisibility" type="bool" default="1"/>
-      <xs:attribute name="script-tick" type="xs:string"/>
-      <xs:attribute name="script-focus" type="xs:string"/>
-      <xs:attribute name="script-trigger" type="xs:string"/>
-      <xs:attribute name="script-filter" type="xs:string"/>
-      <xs:attribute name="script-once" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Trail">
-    <xs:complexType>
-      <xs:attribute name="type" type="xs:string" use="required" />
-      <xs:attribute name="trailData" type="xs:string" use="required" />
-      <xs:attribute name="achievementid" type="xs:positiveInteger" />
-      <xs:attribute name="achievementbit" type="xs:positiveInteger" />
-      <xs:attribute name="alpha" type="xs:float" default="1.0"/>
-      <xs:attribute name="animspeed" type="xs:float" />
-      <xs:attribute name="autotrigger" type="bool" default="0"/>
-      <xs:attribute name="behavior">
-        <xs:simpleType>
-          <xs:restriction base="xs:positiveInteger">
-            <xs:pattern value="[0-7]|101"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="canfade" type="bool" default="1"/>
-      <xs:attribute name="color" default="#FFFFFF">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:pattern value="#[0-9a-fA-F]{6}"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="copy" type="xs:string" />
-      <xs:attribute name="copy-message" type="xs:string" />
-      <xs:attribute name="cull">
-        <xs:simpleType>
-          <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="None" />
-            <xs:enumeration value="Clockwise" />
-            <xs:enumeration value="CounterClockwise" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="defaulttoggle" type="bool" default="1"/>
-      <xs:attribute name="fadenear" type="xs:float" default="700"/>
-      <xs:attribute name="fadefar" type="xs:float" default="900"/>
-      <xs:attribute name="festival" type="xs:string"/>
-      <xs:attribute name="heightoffset" type="xs:float" default="1.5"/>
-      <xs:attribute name="iconfile" type="xs:string"/>
-      <xs:attribute name="iconsize" type="xs:string" default="1"/>
-      <xs:attribute name="info" type="xs:string"/>
-      <xs:attribute name="inforange" type="xs:float" default="10.0"/>
-      <xs:attribute name="isseparator" type="bool" default="0"/>
-      <xs:attribute name="mapdisplaysize" type="xs:float" default="20"/>
-      <xs:attribute name="maptype" type="xs:string"/>
-      <xs:attribute name="mount" type="xs:string"/>
-      <xs:attribute name="profession" type="xs:string"/>
-      <xs:attribute name="race" type="xs:string"/>
-      <xs:attribute name="resetlength" type="xs:float"/>
-      <xs:attribute name="scaleonmapwithzoom" type="bool" default="1"/>
-      <xs:attribute name="schedule" type="xs:string"/>
-      <xs:attribute name="schedule-duration" type="xs:float"/>
-      <xs:attribute name="show" type="xs:string"/>
-      <xs:attribute name="hide" type="xs:string"/>
-      <xs:attribute name="minsize" type="xs:float" default="5"/>
-      <xs:attribute name="maxsize" type="xs:float" default="2048"/>
-      <xs:attribute name="specialization" type="xs:string"/>
-      <xs:attribute name="texture" type="xs:string"/>
-      <xs:attribute name="tip-name" type="xs:string"/>
-      <xs:attribute name="tip-description" type="xs:string"/>
-      <xs:attribute name="trailscale" type="xs:float" default="1"/>
-      <xs:attribute name="triggerrange" type="xs:float" default="2"/>
-      <xs:attribute name="minimapvisibility" type="bool" default="1"/>
-      <xs:attribute name="mapvisibility" type="bool" default="1"/>
-      <xs:attribute name="ingamevisibility" type="bool" default="1"/>
-      <xs:attribute name="iswall" type="bool" default="0"/>
-      <xs:attribute name="script-tick" type="xs:string"/>
-      <xs:attribute name="script-focus" type="xs:string"/>
-      <xs:attribute name="script-trigger" type="xs:string"/>
-      <xs:attribute name="script-filter" type="xs:string"/>
-      <xs:attribute name="script-once" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
+    </xs:attribute>
+    <xs:attribute name="hasCountdown" type="xs:float"/>
+    <xs:attribute name="bounce-height" type="xs:float" />
+    <xs:attribute name="bounce-duration" type="xs:float" />
+    <xs:attribute name="bounce-delay" type="xs:float" />
+    <xs:attribute name="copy" type="xs:string" />
+    <xs:attribute name="copy-message" type="xs:string" />
+    <xs:attribute name="heightOffset" type="xs:float" default="1.5"/>
+    <xs:attribute name="iconFile" type="xs:string"/>
+    <xs:attribute name="iconSize" type="xs:string" default="1"/>
+    <xs:attribute name="info" type="xs:string"/>
+    <xs:attribute name="infoRange" type="xs:float" default="10.0"/>
+    <xs:attribute name="invertBehavior" type="bool" default="0"/>
+    <xs:attribute name="mapDisplaySize" type="xs:float" default="20"/>
+    <xs:attribute name="minSize" type="xs:float" default="5"/>
+    <xs:attribute name="maxSize" type="xs:float" default="2048"/>
+    <xs:attribute name="resetLength" type="xs:float"/>
+    <xs:attribute name="scaleOnMapWithZoom" type="bool" default="1"/>
+    <xs:attribute name="show" type="xs:string"/>
+    <xs:attribute name="hide" type="xs:string"/>
+    <xs:attribute name="toggle" type="xs:string"/>
+    <xs:attribute name="triggerRange" type="xs:float" default="2"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="CategoryAndTrailAttr">
+    <xs:attribute name="animSpeed" type="xs:float"/>
+    <xs:attribute name="iswall" type="bool" default="0"/>
+    <xs:attribute name="trailScale" type="xs:float" default="1"/>
+    <xs:attribute name="texture" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="MarkerAndTrailAttr">
+    <xs:attribute name="type" type="xs:string" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="bool">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[01]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
 </xs:schema>
