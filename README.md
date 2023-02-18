@@ -21,7 +21,7 @@ Replace the `<OverlayData>` tag at the beginning of your XML with the following:
 ```xml
 <OverlayData 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="https://github.com/xrandox/Gw2_Marker_Pack_DTD https://raw.githubusercontent.com/xrandox/Gw2_Marker_Pack_DTD_XSD/main/GW2MarkerPack.xsd"
+xsi:schemaLocation="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD https://raw.githubusercontent.com/xrandox/Gw2_Marker_Pack_DTD_XSD/main/GW2MarkerPack.xsd"
 xmlns="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD">
 ```
 
@@ -41,7 +41,7 @@ Replace the `<OverlayData>` tag at the beginning of your XML with the following:
 ```xml
 <OverlayData 	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="https://github.com/xrandox/Gw2_Marker_Pack_DTD GW2MarkerPack.xsd"
+xsi:schemaLocation="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD GW2MarkerPack.xsd"
 xmlns="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD">
 ```
 
