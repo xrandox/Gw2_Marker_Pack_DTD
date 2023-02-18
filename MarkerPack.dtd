@@ -1,6 +1,6 @@
 <!ELEMENT OverlayData (MarkerCategory, POIs)>
 <!ELEMENT MarkerCategory (MarkerCategory*)>
-<!ELEMENT POIs (POI*,Trail*)>
+<!ELEMENT POIs (POI|Trail)*>
 <!ELEMENT POI EMPTY>
 <!ELEMENT Trail EMPTY>
 
