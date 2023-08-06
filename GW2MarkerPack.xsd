@@ -151,16 +151,6 @@
     <xs:attribute name="ypos" type="xs:float" use="required"/>
     <xs:attribute name="zpos" type="xs:float" use="required"/>
     <xs:attribute name="GUID" type="xs:string" use="required"/>
-    <xs:attribute name="rotate">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:pattern value="(-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?)"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="rotate-x" type="xs:float"/>
-      <xs:attribute name="rotate-y" type="xs:float"/>
-      <xs:attribute name="rotate-z" type="xs:float"/>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="TrailAttr">
@@ -201,6 +191,16 @@
     <xs:attribute name="minSize" type="xs:float" default="5"/>
     <xs:attribute name="maxSize" type="xs:float" default="2048"/>
     <xs:attribute name="resetLength" type="xs:float"/>
+    <xs:attribute name="rotate">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="(-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rotate-x" type="xs:float"/>
+    <xs:attribute name="rotate-y" type="xs:float"/>
+    <xs:attribute name="rotate-z" type="xs:float"/>
     <xs:attribute name="scaleOnMapWithZoom" type="bool" default="1"/>
     <xs:attribute name="show" type="xs:string"/>
     <xs:attribute name="hide" type="xs:string"/>
