@@ -355,10 +355,6 @@
 <!ATTLIST Trail bh-profession CDATA #IMPLIED>
 <!ATTLIST Trail bh-race CDATA #IMPLIED>
 <!ATTLIST Trail bh-resetLength CDATA #IMPLIED>
-<!ATTLIST Trail bh-rotate CDATA #IMPLIED>
-<!ATTLIST Trail bh-rotate-x CDATA #IMPLIED>
-<!ATTLIST Trail bh-rotate-y CDATA #IMPLIED>
-<!ATTLIST Trail bh-rotate-z CDATA #IMPLIED>
 <!ATTLIST Trail bh-scaleOnMapWithZoom (0|1) #IMPLIED>
 <!ATTLIST Trail bh-schedule CDATA #IMPLIED>
 <!ATTLIST Trail bh-schedule-duration CDATA #IMPLIED>
