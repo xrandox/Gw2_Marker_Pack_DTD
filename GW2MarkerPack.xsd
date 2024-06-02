@@ -251,6 +251,11 @@
         <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/displayname">The name shown in the category dropdown menus.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="ishidden" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/ishidden">Prevents the category from being displayed in the category menu.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="isseparator" type="bool" default="0">
       <xs:annotation>
         <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/isseparator">Determines if the category should be treated as a separator or "header" instead of a category. Allows you to split up your category menus with section headers which will not show toggles or categories.</xs:documentation>

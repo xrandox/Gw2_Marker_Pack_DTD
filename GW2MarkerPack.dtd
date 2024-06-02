@@ -31,6 +31,7 @@
 <!ATTLIST MarkerCategory info CDATA #IMPLIED>
 <!ATTLIST MarkerCategory infoRange CDATA #IMPLIED>
 <!ATTLIST MarkerCategory invertBehavior (0|1) #IMPLIED>
+<!ATTLIST MarkerCategory ishidden (0|1) #IMPLIED>
 <!ATTLIST MarkerCategory isseparator (0|1) #IMPLIED>
 <!ATTLIST MarkerCategory mapDisplaySize CDATA #IMPLIED>
 <!ATTLIST MarkerCategory maptype CDATA #IMPLIED>
@@ -161,7 +162,6 @@
 <!ATTLIST POI info CDATA #IMPLIED>
 <!ATTLIST POI infoRange CDATA #IMPLIED>
 <!ATTLIST POI invertBehavior (0|1) #IMPLIED>
-<!ATTLIST POI isseparator (0|1) #IMPLIED>
 <!ATTLIST POI mapDisplaySize CDATA #IMPLIED>
 <!ATTLIST POI maptype CDATA #IMPLIED>
 <!ATTLIST POI mount CDATA #IMPLIED>
@@ -222,7 +222,6 @@
 <!ATTLIST POI bh-info CDATA #IMPLIED>
 <!ATTLIST POI bh-infoRange CDATA #IMPLIED>
 <!ATTLIST POI bh-invertBehavior (0|1) #IMPLIED>
-<!ATTLIST POI bh-isseparator (0|1) #IMPLIED>
 <!ATTLIST POI bh-mapDisplaySize CDATA #IMPLIED>
 <!ATTLIST POI bh-maptype CDATA #IMPLIED>
 <!ATTLIST POI bh-mount CDATA #IMPLIED>
@@ -287,7 +286,6 @@
 <!ATTLIST Trail info CDATA #IMPLIED>
 <!ATTLIST Trail infoRange CDATA #IMPLIED>
 <!ATTLIST Trail invertBehavior (0|1) #IMPLIED>
-<!ATTLIST Trail isseparator (0|1) #IMPLIED>
 <!ATTLIST Trail mapDisplaySize CDATA #IMPLIED>
 <!ATTLIST Trail maptype CDATA #IMPLIED>
 <!ATTLIST Trail mount CDATA #IMPLIED>
@@ -348,7 +346,6 @@
 <!ATTLIST Trail bh-info CDATA #IMPLIED>
 <!ATTLIST Trail bh-infoRange CDATA #IMPLIED>
 <!ATTLIST Trail bh-invertBehavior (0|1) #IMPLIED>
-<!ATTLIST Trail bh-isseparator (0|1) #IMPLIED>
 <!ATTLIST Trail bh-mapDisplaySize CDATA #IMPLIED>
 <!ATTLIST Trail bh-maptype CDATA #IMPLIED>
 <!ATTLIST Trail bh-mount CDATA #IMPLIED>
