@@ -65,12 +65,31 @@
   </xs:element>
 
   <xs:attributeGroup name="CommonAttr">
-    <xs:attribute name="achievementId" type="xs:positiveInteger" />
-    <xs:attribute name="achievementBit" type="xs:integer" />
-    <xs:attribute name="alpha" type="xs:float" default="1.0"/>
-    <xs:attribute name="canfade" type="bool" default="1"/>
+    <xs:attribute name="achievementId" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/achievement">Hides markers and trails based on their associated completion status reported by the web API. The achievement this marker or trail will hide for when completed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="achievementBit" type="xs:integer">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/achievement">Hides markers and trails based on their associated completion status reported by the web API. The id of the sub item within an achievement this marker or trail will hide for when completed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="alpha" type="xs:float" default="1.0">
+    <xs:annotation>
+      <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/alpha">Hides markers and trails based on their associated completion status reported by the web API. The id of the sub item within an achievement this marker or trail will hide for when completed.</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+    <xs:attribute name="canfade" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/canfade">Allows a marker or trail to ignore fade features such as those which hide trails around the player or between the user and their camera.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="color" default="#FFFFFF">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/color">Tints the marker or trail with the color provided. Powerful when reusing existing marker icons or trail textures which differ in color only.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:token">
           <xs:pattern value="#[0-9a-fA-F]{6}"/>
         </xs:restriction>
@@ -78,17 +97,31 @@
     </xs:attribute>
     <xs:attribute name="cull">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/cull">By default markers and trails are rendered without culling meaning that both sides are rendered at all times. Alternative culling settings allow you to enable culling for one side or the other. For example, a trail can be made to be visible when viewed from below.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="None" />
-          <xs:enumeration value="Clockwise" />
-          <xs:enumeration value="CounterClockwise" />
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="Clockwise"/>
+          <xs:enumeration value="CounterClockwise"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="fadeNear" type="xs:float" default="700"/>
-    <xs:attribute name="fadeFar" type="xs:float" default="900"/>
+    <xs:attribute name="fadeNear" type="xs:float" default="700">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/fade">Indicates the distance that markers or trails should begin to fade and the distance where they are fully faded. These attributes are important to keep from polluting the user's view and keep only what's important visible on screen. This attribute is unaffected and unrelated to CanFade. The distance from the marker or trail segment when it should begin to fade.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="fadeFar" type="xs:float" default="900">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/fade">Indicates the distance that markers or trails should begin to fade and the distance where they are fully faded. These attributes are important to keep from polluting the user's view and keep only what's important visible on screen. This attribute is unaffected and unrelated to CanFade. The distance from the marker or trail segment when it should no longer be visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="festival">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/festival">Hides the marker or trail if one of the specified festivals is not active.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash)(,(halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash))*)"/>
         </xs:restriction>
@@ -96,6 +129,9 @@
     </xs:attribute>
     <xs:attribute name="maptype">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/maptype">Hides the marker or trail if the current map is not one of the specified map types.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds
           |bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini)(,(unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds|bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini))*)"/>
@@ -104,6 +140,9 @@
     </xs:attribute>
     <xs:attribute name="mount">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mount">Hides the marker or trail if the player is not currently riding one of the specified mounts.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale)(,(jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale))*)"/>
         </xs:restriction>
@@ -111,6 +150,9 @@
     </xs:attribute>
     <xs:attribute name="profession">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/profession">Hides the marker or trail if the player is not currently one of the specified professions.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant)(,(guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant))*)"/>
         </xs:restriction>
@@ -118,50 +160,166 @@
     </xs:attribute>
     <xs:attribute name="race">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/race">Hides the marker or trail if the player is not currently one of the specified races.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((asura|human|charr|sylvari|norn)(,(asura|human|charr|sylvari|norn))*)"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="schedule" type="xs:string"/>
-    <xs:attribute name="schedule-duration" type="xs:float"/>
-    <xs:attribute name="specialization" type="xs:string"/>
-    <xs:attribute name="tip-name" type="xs:string"/>
-    <xs:attribute name="tip-description" type="xs:string"/>
-    <xs:attribute name="miniMapVisibility" type="bool" default="1"/>
-    <xs:attribute name="mapVisibility" type="bool" default="1"/>
-    <xs:attribute name="inGameVisibility" type="bool" default="1"/>
-    <xs:attribute name="script-tick" type="xs:string"/>
-    <xs:attribute name="script-focus" type="xs:string"/>
-    <xs:attribute name="script-trigger" type="xs:string"/>
-    <xs:attribute name="script-filter" type="xs:string"/>
-    <xs:attribute name="script-once" type="xs:string"/>
+    <xs:attribute name="schedule" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/schedule">Hides the marker outside of the specified schedule. Good for showing markers only during their associated scheduled meta event, day of the week, etc. All scheduling is based on UTC. A cron expression which represents the start time of when the marker or trail should be shown.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="schedule-duration" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/schedule">Requires schedule to be set. The duration after the start time that the marker or trail should remain visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="specialization">
+      <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/specialization">Hides the marker or trail if the player is not currently one of the specified specializations. This can be elite specializations or other specializations located in the third slot only.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:positiveInteger">
+          <xs:pattern value="((5|7|18|27|34|40|43|48|52|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|1|2|3|4|6|8|9|10|11|12|13|14|15|16|17|19|20|21|22|23|24|25|26|28|29|30|31|32|33|35|36|37|38|39|41|42|44|45|46|47|49|50|51|53|54)(,(5|7|18|27|34|40|43|48|52|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|1|2|3|4|6|8|9|10|11|12|13|14|15|16|17|19|20|21|22|23|24|25|26|28|29|30|31|32|33|35|36|37|38|39|41|42|44|45|46|47|49|50|51|53|54))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="tip-name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/tip">Allows you to display a tooltip on markers on the minimap or categories in the category dropdown. The text to show as the title of the tooltip.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="tip-description" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/tip">Allows you to display a tooltip on markers on the minimap or categories in the category dropdown. The description text shown under the title.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="miniMapVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed on the minimap (compass).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="mapVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed on the fullscreen map.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="inGameVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed in-game.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="script-tick" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed in the same way that OnTick code is, but with the context of a specific marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="script-focus" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed when a marker is focused (player is within triggerRange).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="script-trigger" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed when a marker is triggered (player is within triggerRange and autoTrigger is on or the player has pressed their interact key).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="script-filter" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed every frame which returns if the marker should be visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="script-once" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is triggered once with the context of the specific marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="CategoryAttr">
-    <xs:attribute name="name" type="xs:string" use="required"/>
-    <xs:attribute name="DisplayName" type="xs:string" use="required"/>
-    <xs:attribute name="isseparator" type="bool" default="0"/>
-    <xs:attribute name="defaulttoggle" type="bool" default="1"/>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The user-invisible building structure name of a category.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="DisplayName" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/displayname">The name shown in the category dropdown menus.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ishidden" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/ishidden">Prevents the category from being displayed in the category menu.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="isseparator" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/isseparator">Determines if the category should be treated as a separator or "header" instead of a category. Allows you to split up your category menus with section headers which will not show toggles or categories.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="defaulttoggle" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/defaulttoggle">Indicates if the category should be enabled by default.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="MarkerAttr">
-    <xs:attribute name="MapID" type="xs:positiveInteger" use="required"/>
-    <xs:attribute name="xpos" type="xs:float" use="required"/>
-    <xs:attribute name="ypos" type="xs:float" use="required"/>
-    <xs:attribute name="zpos" type="xs:float" use="required"/>
-    <xs:attribute name="GUID" type="xs:string" use="required"/>
+    <xs:attribute name="MapID" type="xs:positiveInteger" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mapid">Defines which map the marker should be displayed on. A list of maps and their ID can be found via the Guild Wars 2 Web API - https://api.guildwars2.com/v2/maps?ids=all</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="xpos" type="xs:float" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the x coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ypos" type="xs:float" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the y coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="zpos" type="xs:float" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the z coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="GUID" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/guid">A unique identifier used to track the state of certain behaviors between launch sessions.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="TrailAttr">
-    <xs:attribute name="trailData" type="xs:string" use="required"/>
-    <xs:attribute name="GUID" type="xs:string"/>
+    <xs:attribute name="trailData" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/traildata">The path to the .trl file which represents the trail itself.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="GUID" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/guid">A unique identifier used to track the state of certain behaviors between launch sessions.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="CategoryAndMarkerAttr">
-    <xs:attribute name="autoTrigger" type="bool" default="0"/>
+    <xs:attribute name="autoTrigger" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/autotrigger">If enabled, attributes and behaviors which would normally require an interaction to activate will instead activate automatically when within triggerrange.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="behavior">
         <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/behavior">Enables one of several predefined behaviors when triggered.</xs:documentation>
+          </xs:annotation>
           <xs:restriction base="xs:positiveInteger">
             <xs:pattern value="[0-7]|101"/>
           </xs:restriction>
@@ -169,64 +327,206 @@
       </xs:attribute>
     <xs:attribute name="bounce">
         <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The bounce behavior mode.</xs:documentation>
+          </xs:annotation>
           <xs:restriction base="xs:string">
             <xs:enumeration value="bounce"/>
             <xs:enumeration value="rise"/>
           </xs:restriction>
         </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="hasCountdown" type="xs:float"/>
-    <xs:attribute name="bounce-height" type="xs:float" />
-    <xs:attribute name="bounce-duration" type="xs:float" />
-    <xs:attribute name="bounce-delay" type="xs:float" />
-    <xs:attribute name="copy" type="xs:string" />
-    <xs:attribute name="copy-message" type="xs:string" />
-    <xs:attribute name="heightOffset" type="xs:float" default="1.5"/>
-    <xs:attribute name="iconFile" type="xs:string"/>
-    <xs:attribute name="iconSize" type="xs:string" default="1"/>
-    <xs:attribute name="info" type="xs:string"/>
-    <xs:attribute name="infoRange" type="xs:float" default="10.0"/>
-    <xs:attribute name="invertBehavior" type="bool" default="0"/>
-    <xs:attribute name="mapDisplaySize" type="xs:float" default="20"/>
-    <xs:attribute name="minSize" type="xs:float" default="5"/>
-    <xs:attribute name="maxSize" type="xs:float" default="2048"/>
-    <xs:attribute name="resetLength" type="xs:float"/>
+
+    <xs:attribute name="bounce-height" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The height of the bounce.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bounce-duration" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The length of time taken to complete the bounce.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bounce-delay" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The amount of time (in seconds) after triggering the bounce that the bounce will begin.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="copy" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/copy">Allows you to set a value to the users clipboard. Good for providing waypoints, build templates, and more. The text assigned to the clipboard.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="copy-message" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/copy">Allows you to set a value to the users clipboard. Good for providing waypoints, build templates, and more. The message shown on screen when the copy is activated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="hasCountdown" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/resetlength">Requires behavior to be set to 4. When using behavior 4 (reappear after timer) this value defines, in seconds, the duration until the marker is reset after being activated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="heightOffset" type="xs:float" default="1.5">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/heightoffset">Renders the marker the specified amount higher than the actual position.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="iconFile" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iconfile">Used to identify the image used for a marker. The value is the path relative to the base of the markerpack archive.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="iconSize" type="xs:string" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iconsize">Indicates the size of the marker. Acts as a multiplier.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="info" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/info">Allows you to show text on screen while the user is in range of the marker. The text shown on screen when the character is in range.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="infoRange" type="xs:float" default="10.0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/info">Allows you to show text on screen while the user is in range of the marker. The distance away that the info text will begin showing on screen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="invertBehavior" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/invertbehavior">If enabled, the behavior filter is inverted. By taking advantage of duplicate GUIDs on a second marker you can have markers which are displayed only while the triggered marker is hidden.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="mapDisplaySize" type="xs:float" default="20">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mapdisplaysize">The size, in pixels, that the marker should be shown on the minimap or fullscreen map. Assuming ScaleOnMapWithZoom is enabled (it is by default), the measurement will be scaled as the user zooms further out.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="minSize" type="xs:float" default="5">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/size">Specifies the minimum or maximum size of a marker on screen measured in pixels. The marker will continue to grow or shrink based on distance but will stop when reaching the specified minimum or maximum. As the player walks further from the marker, this will be the smallest the marker can be displayed measured in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="maxSize" type="xs:float" default="2048">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/size">Specifies the minimum or maximum size of a marker on screen measured in pixels. The marker will continue to grow or shrink based on distance but will stop when reaching the specified minimum or maximum. As the player walks closer to the marker, this will be the largest the marker can be displayed measured in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="resetLength" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/resetlength">When using behavior 4 (reappear after timer) this value defines, in seconds, the duration until the marker is reset after being activated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="rotate">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/rotate">Allows you to statically rotate a marker instead of it automatically facing the player. Value is in degrees. Rotation is applied first to the x axis, then to y, and finally to z.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="(-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?)"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="rotate-x" type="xs:float"/>
-    <xs:attribute name="rotate-y" type="xs:float"/>
-    <xs:attribute name="rotate-z" type="xs:float"/>
-    <xs:attribute name="scaleOnMapWithZoom" type="bool" default="1"/>
-    <xs:attribute name="show" type="xs:string"/>
-    <xs:attribute name="hide" type="xs:string"/>
-    <xs:attribute name="toggle" type="xs:string"/>
-    <xs:attribute name="triggerRange" type="xs:float" default="2"/>
+    <xs:attribute name="rotate-x" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/rotate">Allows you to statically rotate a marker instead of it automatically facing the player. Value is in degrees. Defines rotation on the x axis in degrees.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rotate-y" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/rotate">Allows you to statically rotate a marker instead of it automatically facing the player. Value is in degrees. Defines rotation on the y axis in degrees.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rotate-z" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/rotate">Allows you to statically rotate a marker instead of it automatically facing the player. Value is in degrees. Defines rotation on the z axis in degrees.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="scaleOnMapWithZoom" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/scaleonmapwithzoom">Determines if the marker should scale when the user zooms in and out of their map.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="show" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/showhide">Allows showing or hiding a specified category when triggered. Similar in behavior to the Toggle attribute. A category to show when triggered. If the category is already showing, then nothing will happen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="hide" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/showhide">Allows showing or hiding a specified category when triggered. Similar in behavior to the Toggle attribute. A category to hide when triggered. If the category is already disabled, then nothing will happen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="toggle" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/toggle">Toggles a category on or off. Similar in behavior to the Show and Hide attributes. e	A category to toggle when triggered. If the category is disabled, it will be enabled. If the category is enabled, it will be disabled.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="triggerRange" type="xs:float" default="2">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/triggerrange">Used to indicate a trigger range. This attribute is used by multiple other attributes to define a distance from the marker in which those attributes will activate their functionality or behavior.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="CategoryAndTrailAttr">
-    <xs:attribute name="animSpeed" type="xs:float"/>
-    <xs:attribute name="iswall" type="bool" default="0"/>
-    <xs:attribute name="trailScale" type="xs:float" default="1"/>
-    <xs:attribute name="texture" type="xs:string"/>
+    <xs:attribute name="animSpeed" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/animspeed">The speed in which the texture will move along a trail. By default, this value is 1. A value of 0 disables the trail animation.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="iswall" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iswall">If the trail should be displayed on its side as a wall instead of a flat trail. Good for indicating a boundary.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="trailScale" type="xs:float" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/trailscale">Allows you to apply a width modifier to a trail.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="texture" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/texture">Used to identify the image used for a trail. The value is the path relative to the base of the marker pack archive. The image is repeated along the length of the trail.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="MarkerAndTrailAttr">
-    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/type">Indicates which category a marker or trail belongs to. The type represents the tree of category name attributes delimited by periods. All markers and trails should have a type.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
 
   <xs:attributeGroup name="bh-CommonAttr">
-    <xs:attribute name="bh-achievementId" type="xs:positiveInteger" />
-    <xs:attribute name="bh-achievementBit" type="xs:integer" />
-    <xs:attribute name="bh-alpha" type="xs:float" default="1.0"/>
-    <xs:attribute name="bh-canfade" type="bool" default="1"/>
+    <xs:attribute name="bh-achievementId" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/achievement">Hides markers and trails based on their associated completion status reported by the web API. The achievement this marker or trail will hide for when completed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-achievementBit" type="xs:integer">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/achievement">Hides markers and trails based on their associated completion status reported by the web API. The id of the sub item within an achievement this marker or trail will hide for when completed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-alpha" type="xs:float" default="1.0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/alpha">Hides markers and trails based on their associated completion status reported by the web API. The id of the sub item within an achievement this marker or trail will hide for when completed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-canfade" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/canfade">Allows a marker or trail to ignore fade features such as those which hide trails around the player or between the user and their camera.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="bh-color" default="#FFFFFF">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/color">Tints the marker or trail with the color provided. Powerful when reusing existing marker icons or trail textures which differ in color only.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:token">
           <xs:pattern value="#[0-9a-fA-F]{6}"/>
         </xs:restriction>
@@ -234,17 +534,31 @@
     </xs:attribute>
     <xs:attribute name="bh-cull">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/cull">By default markers and trails are rendered without culling meaning that both sides are rendered at all times. Alternative culling settings allow you to enable culling for one side or the other. For example, a trail can be made to be visible when viewed from below.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="None" />
-          <xs:enumeration value="Clockwise" />
-          <xs:enumeration value="CounterClockwise" />
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="Clockwise"/>
+          <xs:enumeration value="CounterClockwise"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="bh-fadeNear" type="xs:float" default="700"/>
-    <xs:attribute name="bh-fadeFar" type="xs:float" default="900"/>
+    <xs:attribute name="bh-fadeNear" type="xs:float" default="700">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/fade">Indicates the distance that markers or trails should begin to fade and the distance where they are fully faded. These attributes are important to keep from polluting the user's view and keep only what's important visible on screen. This attribute is unaffected and unrelated to CanFade. The distance from the marker or trail segment when it should begin to fade.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-fadeFar" type="xs:float" default="900">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/fade">Indicates the distance that markers or trails should begin to fade and the distance where they are fully faded. These attributes are important to keep from polluting the user's view and keep only what's important visible on screen. This attribute is unaffected and unrelated to CanFade. The distance from the marker or trail segment when it should no longer be visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="bh-festival">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/festival">Hides the marker or trail if one of the specified festivals is not active.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash)(,(halloween|wintersday|superadventurefestival|lunarnewyear|festivalofthefourwinds|dragonbash))*)"/>
         </xs:restriction>
@@ -252,6 +566,9 @@
     </xs:attribute>
     <xs:attribute name="bh-maptype">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/maptype">Hides the marker or trail if the current map is not one of the specified map types.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds
           |bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini)(,(unknown|redirect|charactercreate|pvp|gvg|instance|public|tournament|tutorial|usertournament|center|eternalbattlegrounds|bluehome|blueborderlands|greenhome|greenborderlands|redhome|redborderlands|fortunesvale|jumppuzzle|obsidiansanctum|edgeofthemists|publicmini))*)"/>
@@ -260,6 +577,9 @@
     </xs:attribute>
     <xs:attribute name="bh-mount">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mount">Hides the marker or trail if the player is not currently riding one of the specified mounts.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale)(,(jackal|griffon|springer|skimmer|raptor|rollerbeetle|warclaw|skyscale))*)"/>
         </xs:restriction>
@@ -267,6 +587,9 @@
     </xs:attribute>
     <xs:attribute name="bh-profession">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/profession">Hides the marker or trail if the player is not currently one of the specified professions.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant)(,(guardian|warrior|engineer|ranger|thief|elementalist|mesmer|necromancer|revenant))*)"/>
         </xs:restriction>
@@ -274,59 +597,161 @@
     </xs:attribute>
     <xs:attribute name="bh-race">
       <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/race">Hides the marker or trail if the player is not currently one of the specified races.</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
           <xs:pattern value="((asura|human|charr|sylvari|norn)(,(asura|human|charr|sylvari|norn))*)"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="bh-schedule" type="xs:string"/>
-    <xs:attribute name="bh-schedule-duration" type="xs:float"/>
-    <xs:attribute name="bh-specialization" type="xs:string"/>
-    <xs:attribute name="bh-tip-name" type="xs:string"/>
-    <xs:attribute name="bh-tip-description" type="xs:string"/>
-    <xs:attribute name="bh-miniMapVisibility" type="bool" default="1"/>
-    <xs:attribute name="bh-mapVisibility" type="bool" default="1"/>
-    <xs:attribute name="bh-inGameVisibility" type="bool" default="1"/>
-    <xs:attribute name="bh-script-tick" type="xs:string"/>
-    <xs:attribute name="bh-script-focus" type="xs:string"/>
-    <xs:attribute name="bh-script-trigger" type="xs:string"/>
-    <xs:attribute name="bh-script-filter" type="xs:string"/>
-    <xs:attribute name="bh-script-once" type="xs:string"/>
+    <xs:attribute name="bh-schedule" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/schedule">Hides the marker outside of the specified schedule. Good for showing markers only during their associated scheduled meta event, day of the week, etc. All scheduling is based on UTC. A cron expression which represents the start time of when the marker or trail should be shown.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-schedule-duration" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/schedule">Requires schedule to be set. The duration after the start time that the marker or trail should remain visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-specialization">
+      <xs:simpleType>
+        <xs:annotation>
+          <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/specialization">Hides the marker or trail if the player is not currently one of the specified specializations. This can be elite specializations or other specializations located in the third slot only.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:positiveInteger">
+          <xs:pattern value="((5|7|18|27|34|40|43|48|52|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|1|2|3|4|6|8|9|10|11|12|13|14|15|16|17|19|20|21|22|23|24|25|26|28|29|30|31|32|33|35|36|37|38|39|41|42|44|45|46|47|49|50|51|53|54)(,(5|7|18|27|34|40|43|48|52|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|1|2|3|4|6|8|9|10|11|12|13|14|15|16|17|19|20|21|22|23|24|25|26|28|29|30|31|32|33|35|36|37|38|39|41|42|44|45|46|47|49|50|51|53|54))*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="bh-tip-name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/tip">Allows you to display a tooltip on markers on the minimap or categories in the category dropdown. The text to show as the title of the tooltip.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-tip-description" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/tip">Allows you to display a tooltip on markers on the minimap or categories in the category dropdown. The description text shown under the title.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-miniMapVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed on the minimap (compass).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-mapVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed on the fullscreen map.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-inGameVisibility" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/visibility">Visibility attributes allow you to indicate where a marker or trail should be shown. By default, markers and trails are visible on the minimap (compass), fullscreen map, and in-game. If set false, the marker or trail will not be displayed in-game.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-script-tick" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed in the same way that OnTick code is, but with the context of a specific marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-script-focus" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed when a marker is focused (player is within triggerRange).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-script-trigger" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed when a marker is triggered (player is within triggerRange and autoTrigger is on or the player has pressed their interact key).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-script-filter" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is executed every frame which returns if the marker should be visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-script-once" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/script">Allows you to trigger Lua functions or determine if a marker is visible using a Lua function. Code that is triggered once with the context of the specific marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-CategoryAttr">
-    <xs:attribute name="bh-name" type="xs:string"/>
-    <xs:attribute name="bh-DisplayName" type="xs:string"/>
-    <xs:attribute name="bh-isseparator" type="bool" default="0"/>
-    <xs:attribute name="bh-defaulttoggle" type="bool" default="1"/>
+    <xs:attribute name="bh-name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The user-invisible building structure name of a category.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-DisplayName" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/displayname">The name shown in the category dropdown menus.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-isseparator" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/isseparator">Determines if the category should be treated as a separator or "header" instead of a category. Allows you to split up your category menus with section headers which will not show toggles or categories.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-defaulttoggle" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/defaulttoggle">Indicates if the category should be enabled by default.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-MarkerAttr">
-    <xs:attribute name="bh-MapID" type="xs:positiveInteger"/>
-    <xs:attribute name="bh-xpos" type="xs:float"/>
-    <xs:attribute name="bh-ypos" type="xs:float"/>
-    <xs:attribute name="bh-zpos" type="xs:float"/>
-    <xs:attribute name="bh-GUID" type="xs:string"/>
-    <xs:attribute name="bh-rotate">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:pattern value="(-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?)"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="bh-rotate-x" type="xs:float"/>
-      <xs:attribute name="bh-rotate-y" type="xs:float"/>
-      <xs:attribute name="bh-rotate-z" type="xs:float"/>
+    <xs:attribute name="bh-MapID" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mapid">Defines which map the marker should be displayed on. A list of maps and their ID can be found via the Guild Wars 2 Web API - https://api.guildwars2.com/v2/maps?ids=all</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-xpos" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the x coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-ypos" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the y coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-zpos" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/position">The primary attributes used to determine where to position a marker. Defines the z coordinate of the marker.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-GUID" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/guid">A unique identifier used to track the state of certain behaviors between launch sessions.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-TrailAttr">
-    <xs:attribute name="bh-trailData" type="xs:string"/>
+    <xs:attribute name="bh-trailData" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/traildata">The path to the .trl file which represents the trail itself.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-GUID" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/guid">A unique identifier used to track the state of certain behaviors between launch sessions.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-CategoryAndMarkerAttr">
-    <xs:attribute name="bh-autoTrigger" type="bool" default="0"/>
+    <xs:attribute name="bh-autoTrigger" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/autotrigger">If enabled, attributes and behaviors which would normally require an interaction to activate will instead activate automatically when within triggerrange.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="bh-behavior">
         <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/behavior">Enables one of several predefined behaviors when triggered.</xs:documentation>
+          </xs:annotation>
           <xs:restriction base="xs:positiveInteger">
             <xs:pattern value="[0-7]|101"/>
           </xs:restriction>
@@ -334,44 +759,152 @@
       </xs:attribute>
     <xs:attribute name="bh-bounce">
         <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The bounce behavior mode.</xs:documentation>
+          </xs:annotation>
           <xs:restriction base="xs:string">
             <xs:enumeration value="bounce"/>
             <xs:enumeration value="rise"/>
           </xs:restriction>
         </xs:simpleType>
     </xs:attribute>
-    <xs:attribute name="bh-hasCountdown" type="xs:float"/>
-    <xs:attribute name="bh-bounce-height" type="xs:float" />
-    <xs:attribute name="bh-bounce-duration" type="xs:float" />
-    <xs:attribute name="bh-bounce-delay" type="xs:float" />
-    <xs:attribute name="bh-copy" type="xs:string" />
-    <xs:attribute name="bh-copy-message" type="xs:string" />
-    <xs:attribute name="bh-heightOffset" type="xs:float" default="1.5"/>
-    <xs:attribute name="bh-iconFile" type="xs:string"/>
-    <xs:attribute name="bh-iconSize" type="xs:string" default="1"/>
-    <xs:attribute name="bh-info" type="xs:string"/>
-    <xs:attribute name="bh-infoRange" type="xs:float" default="10.0"/>
-    <xs:attribute name="bh-invertBehavior" type="bool" default="0"/>
-    <xs:attribute name="bh-mapDisplaySize" type="xs:float" default="20"/>
-    <xs:attribute name="bh-minSize" type="xs:float" default="5"/>
-    <xs:attribute name="bh-maxSize" type="xs:float" default="2048"/>
-    <xs:attribute name="bh-resetLength" type="xs:float"/>
-    <xs:attribute name="bh-scaleOnMapWithZoom" type="bool" default="1"/>
-    <xs:attribute name="bh-show" type="xs:string"/>
-    <xs:attribute name="bh-hide" type="xs:string"/>
-    <xs:attribute name="bh-toggle" type="xs:string"/>
-    <xs:attribute name="bh-triggerRange" type="xs:float" default="2"/>
+    <xs:attribute name="bh-hasCountdown" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/resetlength">Requires behavior to be set to 4. When using behavior 4 (reappear after timer) this displays the time left (in seconds) until the marker reappears.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-bounce-height" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The height of the bounce.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-bounce-duration" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The length of time taken to complete the bounce.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-bounce-delay" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/bounce">Allows a marker to "bounce" or rise up out of the way when triggered. The amount of time (in seconds) after triggering the bounce that the bounce will begin.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-copy" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/copy">Allows you to set a value to the users clipboard. Good for providing waypoints, build templates, and more. The text assigned to the clipboard.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-copy-message" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/copy">Allows you to set a value to the users clipboard. Good for providing waypoints, build templates, and more. The message shown on screen when the copy is activated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-heightOffset" type="xs:float" default="1.5">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/heightoffset">Renders the marker the specified amount higher than the actual position.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-iconFile" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iconfile">Used to identify the image used for a marker. The value is the path relative to the base of the markerpack archive.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-iconSize" type="xs:string" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iconsize">Indicates the size of the marker. Acts as a multiplier.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-info" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/info">Allows you to show text on screen while the user is in range of the marker. The text shown on screen when the character is in range.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-infoRange" type="xs:float" default="10.0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/info">Allows you to show text on screen while the user is in range of the marker. The distance away that the info text will begin showing on screen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-invertBehavior" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/invertbehavior">If enabled, the behavior filter is inverted. By taking advantage of duplicate GUIDs on a second marker you can have markers which are displayed only while the triggered marker is hidden.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-mapDisplaySize" type="xs:float" default="20">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/mapdisplaysize">The size, in pixels, that the marker should be shown on the minimap or fullscreen map. Assuming ScaleOnMapWithZoom is enabled (it is by default), the measurement will be scaled as the user zooms further out.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-minSize" type="xs:float" default="5">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/size">Specifies the minimum or maximum size of a marker on screen measured in pixels. The marker will continue to grow or shrink based on distance but will stop when reaching the specified minimum or maximum. As the player walks further from the marker, this will be the smallest the marker can be displayed measured in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-maxSize" type="xs:float" default="2048">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/size">Specifies the minimum or maximum size of a marker on screen measured in pixels. The marker will continue to grow or shrink based on distance but will stop when reaching the specified minimum or maximum. As the player walks closer to the marker, this will be the largest the marker can be displayed measured in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-resetLength" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/resetlength">When using behavior 4 (reappear after timer) this value defines, in seconds, the duration until the marker is reset after being activated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-scaleOnMapWithZoom" type="bool" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/scaleonmapwithzoom">Determines if the marker should scale when the user zooms in and out of their map.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-show" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/showhide">Allows showing or hiding a specified category when triggered. Similar in behavior to the Toggle attribute. A category to show when triggered. If the category is already showing, then nothing will happen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-hide" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/showhide">Allows showing or hiding a specified category when triggered. Similar in behavior to the Toggle attribute. A category to hide when triggered. If the category is already disabled, then nothing will happen.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-toggle" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/toggle">Toggles a category on or off. Similar in behavior to the Show and Hide attributes. e	A category to toggle when triggered. If the category is disabled, it will be enabled. If the category is enabled, it will be disabled.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-triggerRange" type="xs:float" default="2">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/triggerrange">Used to indicate a trigger range. This attribute is used by multiple other attributes to define a distance from the marker in which those attributes will activate their functionality or behavior.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-CategoryAndTrailAttr">
-    <xs:attribute name="bh-animSpeed" type="xs:float"/>
-    <xs:attribute name="bh-iswall" type="bool" default="0"/>
-    <xs:attribute name="bh-trailScale" type="xs:float" default="1"/>
-    <xs:attribute name="bh-texture" type="xs:string"/>
+    <xs:attribute name="bh-animSpeed" type="xs:float">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/animspeed">The speed in which the texture will move along a trail. By default, this value is 1. A value of 0 disables the trail animation.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-iswall" type="bool" default="0">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/iswall">If the trail should be displayed on its side as a wall instead of a flat trail. Good for indicating a boundary.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-trailScale" type="xs:float" default="1">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/trailscale">Allows you to apply a width modifier to a trail.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bh-texture" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/texture">Used to identify the image used for a trail. The value is the path relative to the base of the marker pack archive. The image is repeated along the length of the trail.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
   </xs:attributeGroup>
 
   <xs:attributeGroup name="bh-MarkerAndTrailAttr">
-    <xs:attribute name="bh-type" type="xs:string"/>
+    <xs:attribute name="bh-type" type="xs:string">
+      <xs:annotation>
+        <xs:documentation source="https://gw2pathing.com/docs/marker-dev/attributes/type">Indicates which category a marker or trail belongs to. The type represents the tree of category name attributes delimited by periods. All markers and trails should have a type.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:simpleType name="bool">
