@@ -897,7 +897,7 @@
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
-  </xs:attributeGroup>
+  
 
   <xs:attributeGroup name="bh-MarkerAndTrailAttr">
     <xs:attribute name="bh-type" type="xs:string">
